@@ -39,10 +39,10 @@ Requires:       ldc
 Requires:       dub
 
 Requires:       zdub-dub-settings-hack
-Requires:       zdub-vibe-d:http-static
 Requires:       zdub-vmc-d-static
-Requires:       zdub-inmath-static
+Requires:       zdub-vibe-d-static
 Requires:       zdub-fghj-static
+Requires:       zdub-inmath-static
 
 
 %description devel

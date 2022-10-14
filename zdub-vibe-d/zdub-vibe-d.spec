@@ -39,11 +39,11 @@ Requires:       ldc
 Requires:       dub
 
 Requires:       zdub-dub-settings-hack
+Requires:       zdub-stdx-allocator-static
 Requires:       zdub-diet-ng-static
 Requires:       zdub-vibe-core-static
-Requires:       zdub-mir-linux-kernel-static
-Requires:       zdub-stdx-allocator-static
 Requires:       zdub-openssl-static
+Requires:       zdub-mir-linux-kernel-static
 
 
 %description devel

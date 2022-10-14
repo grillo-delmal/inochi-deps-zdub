@@ -42,10 +42,10 @@ Requires:       dub
 
 Requires:       zdub-dub-settings-hack
 Requires:       zdub-imagefmt-static
-Requires:       zdub-bindbc-opengl-static
-Requires:       zdub-silly-static
-Requires:       zdub-inmath-static
 Requires:       zdub-fghj-static
+Requires:       zdub-silly-static
+Requires:       zdub-bindbc-opengl-static
+Requires:       zdub-inmath-static
 
 
 %description devel

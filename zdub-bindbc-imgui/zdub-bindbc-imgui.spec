@@ -45,8 +45,8 @@ Requires:       ldc
 Requires:       dub
 
 Requires:       zdub-dub-settings-hack
-Requires:       zdub-bindbc-opengl-static
 Requires:       zdub-bindbc-sdl-static
+Requires:       zdub-bindbc-opengl-static
 
 Requires:       cmake
 Requires:       gcc
