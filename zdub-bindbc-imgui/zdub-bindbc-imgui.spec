@@ -83,8 +83,8 @@ rm -rf deps/cimgui/imgui/examples/
 rm -f .gitmodules
 cat > .gitmodules <<EOF
 [submodule "deps/cimgui"]
-   path = deps/cimgui
-   url = https://github.com/Inochi2D/cimgui.git
+	path = deps/cimgui
+	url = https://github.com/Inochi2D/cimgui.git
 EOF
 mkdir -p deps/cimgui/.git
 
