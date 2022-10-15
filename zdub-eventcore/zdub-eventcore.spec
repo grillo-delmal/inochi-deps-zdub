@@ -53,6 +53,16 @@ setgittag --rm -f -m v%{lib_gitver}
 
 mv LICENSE.txt LICENSE
 
+#FIXME: libasync is not packaged
+mkdir -p libasync
+echo "name \"libasync\"" > libasync/dub.sdl
+pushd libasync
+setgittag -m --rm -f v0.8.2
+popd
+
+mkdir -p /builddir/.dub/packages/libasync-0.8.2
+mv ./libasync /builddir/.dub/packages/libasync-0.8.2/libasync
+
 
 %build
 
@@ -60,11 +70,14 @@ mv LICENSE.txt LICENSE
 %install
 mkdir -p %{buildroot}%{_includedir}/zdub/%{lib_name}-%{lib_gitver}
 cp -r . %{buildroot}%{_includedir}/zdub/%{lib_name}-%{lib_gitver}/%{lib_name}
+mkdir -p %{buildroot}%{_includedir}/zdub/libasync-0.8.2
+cp -r /builddir/.dub/packages/libasync-0.8.2/libasync %{buildroot}%{_includedir}/zdub/libasync-0.8.2/libasync
 
 
 %files devel
 %license LICENSE
 %{_includedir}/zdub/%{lib_name}-%{lib_gitver}/%{lib_name}/
+%{_includedir}/zdub/libasync-0.8.2/
 
 
 %changelog
