@@ -39,8 +39,8 @@ Requires:       ldc
 Requires:       dub
 
 Requires:       zdub-dub-settings-hack
-Requires:       zdub-stdx-allocator-static
 Requires:       zdub-eventcore-static
+Requires:       zdub-stdx-allocator-static
 
 
 %description devel
