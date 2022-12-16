@@ -23,6 +23,9 @@ Source0:        https://github.com/BindBC/bindbc-sdl/archive/refs/tags/v%{lib_gi
 
 BuildRequires:  setgittag
 BuildRequires:  git
+BuildRequires:  ldc
+BuildRequires:  dub
+BuildRequires:  zdub-bindbc-loader-static
 
 
 %description
@@ -35,11 +38,7 @@ Provides:       %{name}-static = %{version}-%{release}
 Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
 
-Requires:       ldc
-Requires:       dub
-
 Requires:       zdub-dub-settings-hack
-Requires:       zdub-bindbc-loader-static
 
 
 %description devel
@@ -55,6 +54,7 @@ mv LICENSE_1_0.txt LICENSE
 
 
 %build
+dub build
 
 
 %install

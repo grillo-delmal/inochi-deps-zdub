@@ -24,6 +24,9 @@ Source1:        LICENSE
 
 BuildRequires:  setgittag
 BuildRequires:  git
+BuildRequires:  ldc
+BuildRequires:  dub
+BuildRequires:  zdub-dunit-static
 
 
 %description
@@ -36,11 +39,7 @@ Provides:       %{name}-static = %{version}-%{release}
 Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
 
-Requires:       ldc
-Requires:       dub
-
 Requires:       zdub-dub-settings-hack
-Requires:       zdub-dunit-static
 
 
 %description devel
@@ -56,6 +55,7 @@ cp %{SOURCE1} .
 
 
 %build
+dub build
 
 
 %install

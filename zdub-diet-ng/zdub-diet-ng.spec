@@ -23,6 +23,8 @@ Source0:        https://github.com/rejectedsoftware/diet-ng/archive/v%{lib_gitve
 
 BuildRequires:  setgittag
 BuildRequires:  git
+BuildRequires:  ldc
+BuildRequires:  dub
 
 
 %description
@@ -34,9 +36,6 @@ An actual description of %{lib_name}
 Provides:       %{name}-static = %{version}-%{release}
 Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
-
-Requires:       ldc
-Requires:       dub
 
 Requires:       zdub-dub-settings-hack
 
@@ -54,6 +53,7 @@ mv LICENSE.txt LICENSE
 
 
 %build
+dub build
 
 
 %install

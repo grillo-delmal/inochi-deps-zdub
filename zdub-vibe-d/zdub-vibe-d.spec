@@ -23,6 +23,13 @@ Source0:        https://github.com/vibe-d/vibe.d/archive/refs/tags/v%{lib_gitver
 
 BuildRequires:  setgittag
 BuildRequires:  git
+BuildRequires:  ldc
+BuildRequires:  dub
+BuildRequires:  zdub-diet-ng-static
+BuildRequires:  zdub-mir-linux-kernel-static
+BuildRequires:  zdub-openssl-static
+BuildRequires:  zdub-stdx-allocator-static
+BuildRequires:  zdub-vibe-core-static
 
 
 %description
@@ -35,15 +42,7 @@ Provides:       %{name}-static = %{version}-%{release}
 Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
 
-Requires:       ldc
-Requires:       dub
-
 Requires:       zdub-dub-settings-hack
-Requires:       zdub-diet-ng-static
-Requires:       zdub-mir-linux-kernel-static
-Requires:       zdub-openssl-static
-Requires:       zdub-stdx-allocator-static
-Requires:       zdub-vibe-core-static
 
 
 %description devel
@@ -60,6 +59,7 @@ rm -rf lib
 
 
 %build
+dub build
 
 
 %install

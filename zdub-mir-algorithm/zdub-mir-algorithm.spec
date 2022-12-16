@@ -1,9 +1,9 @@
 %global debug_package %{nil}
 
 %define lib_name      mir-algorithm
-%define lib_ver       3.16.8
-%define lib_gitver    3.16.8
-%define lib_semver    3.16.8
+%define lib_ver       3.18.4
+%define lib_gitver    3.18.4
+%define lib_semver    3.18.4
 %define lib_dist      0
 %define lib_commit    0000000
 %define lib_short     0000000
@@ -23,6 +23,9 @@ Source0:        https://github.com/libmir/mir-algorithm/archive/refs/tags/v%{lib
 
 BuildRequires:  setgittag
 BuildRequires:  git
+BuildRequires:  ldc
+BuildRequires:  dub
+BuildRequires:  zdub-mir-core-static
 
 
 %description
@@ -35,11 +38,7 @@ Provides:       %{name}-static = %{version}-%{release}
 Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
 
-Requires:       ldc
-Requires:       dub
-
 Requires:       zdub-dub-settings-hack
-Requires:       zdub-mir-core-static
 
 
 %description devel
@@ -53,6 +52,7 @@ setgittag --rm -f -m v%{lib_gitver}
 
 
 %build
+dub build
 
 
 %install

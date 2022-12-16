@@ -17,13 +17,15 @@ Version:        %{lib_ver}%{?lib_suffix:}
 Release:        %autorelease
 Summary:        %{lib_name} library for D
 Group:          Development/Libraries
-License:        BSL-1.0
+License:        MIT
 URL:            https://github.com/s-ludwig/taggedalgebraic
 Source0:        https://github.com/s-ludwig/taggedalgebraic/archive/refs/tags/v%{lib_gitver}/taggedalgebraic-%{lib_gitver}.tar.gz
 Source1:        LICENSE
 
 BuildRequires:  setgittag
 BuildRequires:  git
+BuildRequires:  ldc
+BuildRequires:  dub
 
 
 %description
@@ -35,9 +37,6 @@ An actual description of %{lib_name}
 Provides:       %{name}-static = %{version}-%{release}
 Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
-
-Requires:       ldc
-Requires:       dub
 
 Requires:       zdub-dub-settings-hack
 
@@ -55,6 +54,7 @@ cp %{SOURCE1} .
 
 
 %build
+dub build
 
 
 %install

@@ -23,6 +23,9 @@ Source0:        https://github.com/vibe-d/eventcore/archive/refs/tags/v%{lib_git
 
 BuildRequires:  setgittag
 BuildRequires:  git
+BuildRequires:  ldc
+BuildRequires:  dub
+BuildRequires:  zdub-taggedalgebraic-static
 
 
 %description
@@ -35,11 +38,7 @@ Provides:       %{name}-static = %{version}-%{release}
 Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
 
-Requires:       ldc
-Requires:       dub
-
 Requires:       zdub-dub-settings-hack
-Requires:       zdub-taggedalgebraic-static
 
 
 %description devel
@@ -65,6 +64,7 @@ mv ./libasync /builddir/.dub/packages/libasync-0.8.2/libasync
 
 
 %build
+dub build
 
 
 %install

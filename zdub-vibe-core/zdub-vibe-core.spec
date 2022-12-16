@@ -1,9 +1,9 @@
 %global debug_package %{nil}
 
 %define lib_name      vibe-core
-%define lib_ver       1.22.4
-%define lib_gitver    1.22.4
-%define lib_semver    1.22.4
+%define lib_ver       1.22.5
+%define lib_gitver    1.22.5
+%define lib_semver    1.22.5
 %define lib_dist      0
 %define lib_commit    0000000
 %define lib_short     0000000
@@ -23,6 +23,10 @@ Source0:        https://github.com/vibe-d/vibe-core/archive/refs/tags/v%{lib_git
 
 BuildRequires:  setgittag
 BuildRequires:  git
+BuildRequires:  ldc
+BuildRequires:  dub
+BuildRequires:  zdub-eventcore-static
+BuildRequires:  zdub-stdx-allocator-static
 
 
 %description
@@ -35,12 +39,7 @@ Provides:       %{name}-static = %{version}-%{release}
 Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
 
-Requires:       ldc
-Requires:       dub
-
 Requires:       zdub-dub-settings-hack
-Requires:       zdub-eventcore-static
-Requires:       zdub-stdx-allocator-static
 
 
 %description devel
@@ -56,6 +55,7 @@ mv LICENSE.txt LICENSE
 
 
 %build
+dub build
 
 
 %install

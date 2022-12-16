@@ -23,6 +23,8 @@ Source0:        https://gitlab.com/AntonMeep/silly/-/archive/v%{lib_gitver}/sill
 
 BuildRequires:  setgittag
 BuildRequires:  git
+BuildRequires:  ldc
+BuildRequires:  dub
 
 
 %description
@@ -34,9 +36,6 @@ An actual description of %{lib_name}
 Provides:       %{name}-static = %{version}-%{release}
 Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
-
-Requires:       ldc
-Requires:       dub
 
 Requires:       zdub-dub-settings-hack
 
@@ -52,6 +51,7 @@ setgittag --rm -f -m v%{lib_gitver}
 
 
 %build
+dub build
 
 
 %install

@@ -1,9 +1,9 @@
 %global debug_package %{nil}
 
 %define lib_name      bindbc-opengl
-%define lib_ver       1.0.2
-%define lib_gitver    1.0.2
-%define lib_semver    1.0.2
+%define lib_ver       1.0.3
+%define lib_gitver    1.0.3
+%define lib_semver    1.0.3
 %define lib_dist      0
 %define lib_commit    0000000
 %define lib_short     0000000
@@ -23,6 +23,9 @@ Source0:        https://github.com/BindBC/bindbc-opengl/archive/refs/tags/v%{lib
 
 BuildRequires:  setgittag
 BuildRequires:  git
+BuildRequires:  ldc
+BuildRequires:  dub
+BuildRequires:  zdub-bindbc-loader-static
 
 
 %description
@@ -35,11 +38,7 @@ Provides:       %{name}-static = %{version}-%{release}
 Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
 
-Requires:       ldc
-Requires:       dub
-
 Requires:       zdub-dub-settings-hack
-Requires:       zdub-bindbc-loader-static
 
 
 %description devel
@@ -55,6 +54,7 @@ mv LICENSE_1_0.txt LICENSE
 
 
 %build
+dub build
 
 
 %install
