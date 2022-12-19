@@ -51,7 +51,6 @@ setgittag --rm -f -m v%{lib_gitver}
 
 
 %build
-dub build
 
 
 %install
