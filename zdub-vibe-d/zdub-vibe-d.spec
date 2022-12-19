@@ -43,6 +43,11 @@ Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
 
 Requires:       zdub-dub-settings-hack
+Requires:       zdub-diet-ng-static
+Requires:       zdub-mir-linux-kernel-static
+Requires:       zdub-openssl-static
+Requires:       zdub-stdx-allocator-static
+Requires:       zdub-vibe-core-static
 
 
 %description devel

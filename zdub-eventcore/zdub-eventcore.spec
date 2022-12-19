@@ -39,6 +39,7 @@ Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
 
 Requires:       zdub-dub-settings-hack
+Requires:       zdub-taggedalgebraic-static
 
 
 %description devel

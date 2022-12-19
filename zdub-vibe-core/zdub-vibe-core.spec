@@ -40,6 +40,8 @@ Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
 
 Requires:       zdub-dub-settings-hack
+Requires:       zdub-eventcore-static
+Requires:       zdub-stdx-allocator-static
 
 
 %description devel
