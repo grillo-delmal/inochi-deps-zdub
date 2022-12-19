@@ -26,6 +26,7 @@ BuildRequires:  git
 BuildRequires:  ldc
 BuildRequires:  dub
 BuildRequires:  zdub-mir-core-static
+BuildRequires:  zdub-silly-static
 
 
 %description
@@ -40,6 +41,8 @@ Group:          Development/Libraries
 
 Requires:       zdub-dub-settings-hack
 Requires:       zdub-mir-core-static
+
+Requires:       zdub-silly-static
 
 
 %description devel
