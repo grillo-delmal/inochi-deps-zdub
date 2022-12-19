@@ -56,6 +56,7 @@ cp %{SOURCE1} .
 
 
 %build
+ldc2 -run scripts/generate_version.d
 
 
 %install
