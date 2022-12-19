@@ -40,6 +40,8 @@ Group:          Development/Libraries
 
 Requires:       zdub-dub-settings-hack
 
+Requires:       openssl-devel
+
 
 %description devel
 Sources to use the %{lib_name} library on dub using the
@@ -54,7 +56,6 @@ cp %{SOURCE1} .
 
 
 %build
-dub build
 
 
 %install
