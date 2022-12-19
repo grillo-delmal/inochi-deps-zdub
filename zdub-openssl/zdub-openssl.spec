@@ -26,6 +26,7 @@ BuildRequires:  setgittag
 BuildRequires:  git
 BuildRequires:  ldc
 BuildRequires:  dub
+BuildRequires:  openssl-devel
 
 
 %description
