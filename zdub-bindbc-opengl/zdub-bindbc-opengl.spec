@@ -55,7 +55,7 @@ mv LICENSE_1_0.txt LICENSE
 
 
 %check
-dub build
+dub build --temp-build
 
 dub clean
 
