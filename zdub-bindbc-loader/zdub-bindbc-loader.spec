@@ -52,8 +52,10 @@ setgittag --rm -f -m v%{lib_gitver}
 mv LICENSE_1_0.txt LICENSE
 
 
-%build
+%check
 dub build
+
+dub clean
 
 
 %install

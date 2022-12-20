@@ -63,8 +63,10 @@ mv LICENSE.txt LICENSE
 rm -rf lib
 
 
-%build
+%check
 dub build
+
+dub clean
 
 
 %install

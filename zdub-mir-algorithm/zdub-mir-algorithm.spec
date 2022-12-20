@@ -55,8 +55,10 @@ zdub-dub-settings-hack method.
 setgittag --rm -f -m v%{lib_gitver}
 
 
-%build
+%check
 dub build
+
+dub clean
 
 
 %install

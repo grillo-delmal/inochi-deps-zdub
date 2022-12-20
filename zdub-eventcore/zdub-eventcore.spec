@@ -64,8 +64,10 @@ mkdir -p /builddir/.dub/packages/libasync-0.8.2
 mv ./libasync /builddir/.dub/packages/libasync-0.8.2/libasync
 
 
-%build
+%check
 dub build
+
+dub clean
 
 
 %install

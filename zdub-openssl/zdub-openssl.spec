@@ -56,8 +56,10 @@ setgittag --rm -f -m v%{lib_gitver}
 cp %{SOURCE1} .
 
 
-%build
+%check
 ldc2 -run scripts/generate_version.d
+
+dub clean
 
 
 %install

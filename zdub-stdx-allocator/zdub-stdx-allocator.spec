@@ -53,8 +53,10 @@ setgittag --rm -f -m v%{lib_gitver}
 cp %{SOURCE1} .
 
 
-%build
+%check
 dub build
+
+dub clean
 
 
 %install
