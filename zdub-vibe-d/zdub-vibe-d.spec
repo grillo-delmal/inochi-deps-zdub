@@ -64,7 +64,7 @@ rm -rf lib
 
 
 %check
-dub build
+dub build --cache=local --temp-build
 
 dub clean
 
