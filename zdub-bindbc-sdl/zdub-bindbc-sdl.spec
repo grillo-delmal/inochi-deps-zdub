@@ -26,6 +26,7 @@ BuildRequires:  git
 BuildRequires:  ldc
 BuildRequires:  dub
 BuildRequires:  zdub-bindbc-loader-static
+BuildRequires:  dub-debuginfo
 
 
 %description
@@ -55,7 +56,7 @@ mv LICENSE_1_0.txt LICENSE
 
 
 %check
-dub build
+dub build --skip-registry=all --vverbose
 dub clean
 
 
