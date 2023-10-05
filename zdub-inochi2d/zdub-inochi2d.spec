@@ -1,9 +1,9 @@
 %global debug_package %{nil}
 
-%define lib_name      mir-algorithm
-%define lib_ver       3.21.0
-%define lib_gitver    3.21.0
-%define lib_semver    3.21.0
+%define lib_name      inochi2d
+%define lib_ver       0.8.3
+%define lib_gitver    0.8.3
+%define lib_semver    0.8.3
 %define lib_dist      0
 %define lib_commit    0000000
 %define lib_short     0000000
@@ -17,15 +17,20 @@ Version:        %{lib_ver}%{?lib_suffix:}
 Release:        %autorelease
 Summary:        %{lib_name} library for D
 Group:          Development/Libraries
-License:        Apache-2.0
-URL:            https://github.com/libmir/mir-algorithm
-Source0:        https://github.com/libmir/mir-algorithm/archive/refs/tags/v%{lib_gitver}/mir-algorithm-%{lib_gitver}.tar.gz
+License:        BSD-2-Clause
+URL:            https://github.com/Inochi2D/%{lib_name}
+Source0:        https://github.com/Inochi2D/inochi2d/archive/%{inochi2d_commit}/inochi2d-%{inochi2d_short}.tar.gz
+
+Patch0:         inochi2d_0.8.0_no-gitver.patch
 
 BuildRequires:  setgittag
 BuildRequires:  git
 BuildRequires:  ldc
 BuildRequires:  dub
-BuildRequires:  zdub-mir-core-static
+BuildRequires:  zdub-fghj-static
+BuildRequires:  zdub-i2d-opengl-static
+BuildRequires:  zdub-imagefmt-static
+BuildRequires:  zdub-inmath-static
 BuildRequires:  zdub-silly-static
 
 
@@ -40,8 +45,10 @@ Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
 
 Requires:       zdub-dub-settings-hack
-Requires:       zdub-mir-core-static
-
+Requires:       zdub-fghj-static
+Requires:       zdub-i2d-opengl-static
+Requires:       zdub-imagefmt-static
+Requires:       zdub-inmath-static
 Requires:       zdub-silly-static
 
 
@@ -52,7 +59,14 @@ zdub-dub-settings-hack method.
 
 %prep
 %autosetup -n %{lib_name}-%{lib_gitver} -p1
-setgittag --rm -f v%{lib_gitver}
+setgittag --rm -f -m v%{lib_gitver}
+
+# FIX: Inochi2D version dependent on git
+cat > source/inochi2d/ver.d <<EOF
+module inochi2d.ver;
+
+enum IN_VERSION = "%{inochi2d_semver}";
+EOF
 
 
 %check
@@ -61,13 +75,13 @@ dub clean
 
 
 %install
-mkdir -p %{buildroot}%{_includedir}/zdub/%{lib_name}/%{lib_gitver}
-cp -r . %{buildroot}%{_includedir}/zdub/%{lib_name}/%{lib_gitver}/%{lib_name}
+mkdir -p %{buildroot}%{_includedir}/zdub/%{lib_name}-%{lib_gitver}
+cp -r . %{buildroot}%{_includedir}/zdub/%{lib_name}-%{lib_gitver}/%{lib_name}
 
 
 %files devel
 %license LICENSE
-%{_includedir}/zdub/%{lib_name}/%{lib_gitver}/%{lib_name}/
+%{_includedir}/zdub/%{lib_name}-%{lib_gitver}/%{lib_name}/
 
 
 %changelog

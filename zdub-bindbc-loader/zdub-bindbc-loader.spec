@@ -1,9 +1,9 @@
 %global debug_package %{nil}
 
 %define lib_name      bindbc-loader
-%define lib_ver       1.0.1
-%define lib_gitver    1.0.1
-%define lib_semver    1.0.1
+%define lib_ver       1.0.3
+%define lib_gitver    1.0.3
+%define lib_semver    1.0.3
 %define lib_dist      0
 %define lib_commit    0000000
 %define lib_short     0000000
@@ -47,25 +47,24 @@ zdub-dub-settings-hack method.
 
 %prep
 %autosetup -n %{lib_name}-%{lib_gitver} -p1
-setgittag --rm -f -m v%{lib_gitver}
+setgittag --rm -f v%{lib_gitver}
 
 mv LICENSE_1_0.txt LICENSE
 
 
 %check
 dub build
-
 dub clean
 
 
 %install
-mkdir -p %{buildroot}%{_includedir}/zdub/%{lib_name}-%{lib_gitver}
-cp -r . %{buildroot}%{_includedir}/zdub/%{lib_name}-%{lib_gitver}/%{lib_name}
+mkdir -p %{buildroot}%{_includedir}/zdub/%{lib_name}/%{lib_gitver}
+cp -r . %{buildroot}%{_includedir}/zdub/%{lib_name}/%{lib_gitver}/%{lib_name}
 
 
 %files devel
 %license LICENSE
-%{_includedir}/zdub/%{lib_name}-%{lib_gitver}/%{lib_name}/
+%{_includedir}/zdub/%{lib_name}/%{lib_gitver}/%{lib_name}/
 
 
 %changelog

@@ -47,23 +47,22 @@ zdub-dub-settings-hack method.
 
 %prep
 %autosetup -n tinyfiledialogs-d-%{lib_gitver} -p1
-setgittag --rm -f -m v%{lib_gitver}
+setgittag --rm -f v%{lib_gitver}
 
 
 %check
 dub build
-
 dub clean
 
 
 %install
-mkdir -p %{buildroot}%{_includedir}/zdub/%{lib_name}-%{lib_gitver}
-cp -r . %{buildroot}%{_includedir}/zdub/%{lib_name}-%{lib_gitver}/%{lib_name}
+mkdir -p %{buildroot}%{_includedir}/zdub/%{lib_name}/%{lib_gitver}
+cp -r . %{buildroot}%{_includedir}/zdub/%{lib_name}/%{lib_gitver}/%{lib_name}
 
 
 %files devel
 %license LICENSE
-%{_includedir}/zdub/%{lib_name}-%{lib_gitver}/%{lib_name}/
+%{_includedir}/zdub/%{lib_name}/%{lib_gitver}/%{lib_name}/
 
 
 %changelog

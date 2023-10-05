@@ -1,9 +1,9 @@
 %global debug_package %{nil}
 
-%define lib_name      openssl
-%define lib_ver       3.2.2
-%define lib_gitver    3.2.2
-%define lib_semver    3.2.2
+%define lib_name      i2d-opengl
+%define lib_ver       1.0.0
+%define lib_gitver    1.0.0
+%define lib_semver    1.0.0
 %define lib_dist      0
 %define lib_commit    0000000
 %define lib_short     0000000
@@ -17,16 +17,15 @@ Version:        %{lib_ver}%{?lib_suffix:}
 Release:        %autorelease
 Summary:        %{lib_name} library for D
 Group:          Development/Libraries
-License:        OpenSSL
-URL:            https://github.com/D-Programming-Deimos/openssl
-Source0:        https://github.com/D-Programming-Deimos/openssl/archive/refs/tags/v%{lib_gitver}/openssl-%{lib_gitver}.tar.gz
-Source1:        LICENSE
+License:        BSD-2-Clause
+URL:            https://github.com/Inochi2D/%{lib_name}
+Source0:        https://github.com/Inochi2D/i2d-opengl/archive/%{i2d_opengl_commit}/i2d-opengl-%{i2d_opengl_short}.tar.gz
 
 BuildRequires:  setgittag
 BuildRequires:  git
 BuildRequires:  ldc
 BuildRequires:  dub
-BuildRequires:  openssl-devel
+BuildRequires:  zdub-bindbc-loader-static
 
 
 %description
@@ -40,8 +39,7 @@ Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
 
 Requires:       zdub-dub-settings-hack
-
-Requires:       openssl-devel
+Requires:       zdub-bindbc-loader-static
 
 
 %description devel
@@ -53,12 +51,9 @@ zdub-dub-settings-hack method.
 %autosetup -n %{lib_name}-%{lib_gitver} -p1
 setgittag --rm -f -m v%{lib_gitver}
 
-cp %{SOURCE1} .
-
 
 %check
-ldc2 -run scripts/generate_version.d
-
+dub build
 dub clean
 
 

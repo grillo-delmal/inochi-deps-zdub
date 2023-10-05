@@ -1,9 +1,9 @@
 %global debug_package %{nil}
 
-%define lib_name      bindbc-opengl
-%define lib_ver       1.0.3
-%define lib_gitver    1.0.3
-%define lib_semver    1.0.3
+%define lib_name      dxml
+%define lib_ver       0.4.4
+%define lib_gitver    0.4.4
+%define lib_semver    0.4.4
 %define lib_dist      0
 %define lib_commit    0000000
 %define lib_short     0000000
@@ -17,15 +17,14 @@ Version:        %{lib_ver}%{?lib_suffix:}
 Release:        %autorelease
 Summary:        %{lib_name} library for D
 Group:          Development/Libraries
-License:        BSL-1.0
-URL:            https://github.com/BindBC/bindbc-opengl
-Source0:        https://github.com/BindBC/bindbc-opengl/archive/refs/tags/v%{lib_gitver}/bindbc-opengl-%{lib_gitver}.tar.gz
+License:        BSD-2-Clause
+URL:            https://github.com/Inochi2D/%{lib_name}
+Source0:        https://github.com/Inochi2D/dxml/archive/%{dxml_commit}/dxml-%{dxml_short}.tar.gz
 
 BuildRequires:  setgittag
 BuildRequires:  git
 BuildRequires:  ldc
 BuildRequires:  dub
-BuildRequires:  zdub-bindbc-loader-static
 
 
 %description
@@ -39,7 +38,6 @@ Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
 
 Requires:       zdub-dub-settings-hack
-Requires:       zdub-bindbc-loader-static
 
 
 %description devel
@@ -49,25 +47,22 @@ zdub-dub-settings-hack method.
 
 %prep
 %autosetup -n %{lib_name}-%{lib_gitver} -p1
-setgittag --rm -f -m v%{lib_gitver}
-
-mv LICENSE_1_0.txt LICENSE
+setgittag --rm -f v%{lib_gitver}
 
 
 %check
-dub build --cache=local --temp-build
-
+dub build
 dub clean
 
 
 %install
-mkdir -p %{buildroot}%{_includedir}/zdub/%{lib_name}-%{lib_gitver}
-cp -r . %{buildroot}%{_includedir}/zdub/%{lib_name}-%{lib_gitver}/%{lib_name}
+mkdir -p %{buildroot}%{_includedir}/zdub/%{lib_name}/%{lib_gitver}
+cp -r . %{buildroot}%{_includedir}/zdub/%{lib_name}/%{lib_gitver}/%{lib_name}
 
 
 %files devel
 %license LICENSE
-%{_includedir}/zdub/%{lib_name}-%{lib_gitver}/%{lib_name}/
+%{_includedir}/zdub/%{lib_name}/%{lib_gitver}/%{lib_name}/
 
 
 %changelog

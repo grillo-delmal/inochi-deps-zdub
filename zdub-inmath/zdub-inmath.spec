@@ -1,9 +1,9 @@
 %global debug_package %{nil}
 
-%define lib_name      vibe-d
-%define lib_ver       0.9.5
-%define lib_gitver    0.9.5
-%define lib_semver    0.9.5
+%define lib_name      inmath
+%define lib_ver       1.0.5+build.1.g3e46a1a
+%define lib_gitver    1.0.5+build.1.g3e46a1a
+%define lib_semver    1.0.5+build.1.g3e46a1a
 %define lib_dist      0
 %define lib_commit    0000000
 %define lib_short     0000000
@@ -17,19 +17,15 @@ Version:        %{lib_ver}%{?lib_suffix:}
 Release:        %autorelease
 Summary:        %{lib_name} library for D
 Group:          Development/Libraries
-License:        MIT
-URL:            https://github.com/vibe-d/vibe.d
-Source0:        https://github.com/vibe-d/vibe.d/archive/refs/tags/v%{lib_gitver}/vibe-d-%{lib_gitver}.tar.gz
+License:        BSD-2-Clause
+URL:            https://github.com/Inochi2D/%{lib_name}
+Source0:        https://github.com/Inochi2D/inmath/archive/%{inmath_commit}/inmath-%{inmath_short}.tar.gz
 
 BuildRequires:  setgittag
 BuildRequires:  git
 BuildRequires:  ldc
 BuildRequires:  dub
-BuildRequires:  zdub-diet-ng-static
-BuildRequires:  zdub-mir-linux-kernel-static
-BuildRequires:  zdub-openssl-static
-BuildRequires:  zdub-stdx-allocator-static
-BuildRequires:  zdub-vibe-core-static
+BuildRequires:  zdub-silly-static
 
 
 %description
@@ -43,11 +39,7 @@ Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
 
 Requires:       zdub-dub-settings-hack
-Requires:       zdub-diet-ng-static
-Requires:       zdub-mir-linux-kernel-static
-Requires:       zdub-openssl-static
-Requires:       zdub-stdx-allocator-static
-Requires:       zdub-vibe-core-static
+Requires:       zdub-silly-static
 
 
 %description devel
@@ -56,16 +48,12 @@ zdub-dub-settings-hack method.
 
 
 %prep
-%autosetup -n vibe.d-%{lib_gitver} -p1
+%autosetup -n %{lib_name}-%{lib_gitver} -p1
 setgittag --rm -f -m v%{lib_gitver}
-
-mv LICENSE.txt LICENSE
-rm -rf lib
 
 
 %check
-dub build --cache=local --temp-build
-
+dub build
 dub clean
 
 

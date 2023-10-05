@@ -1,9 +1,9 @@
 %global debug_package %{nil}
 
-%define lib_name      vibe-core
-%define lib_ver       1.22.5
-%define lib_gitver    1.22.5
-%define lib_semver    1.22.5
+%define lib_name      bcaa
+%define lib_ver       0.0.8
+%define lib_gitver    0.0.8
+%define lib_semver    0.0.8
 %define lib_dist      0
 %define lib_commit    0000000
 %define lib_short     0000000
@@ -17,16 +17,14 @@ Version:        %{lib_ver}%{?lib_suffix:}
 Release:        %autorelease
 Summary:        %{lib_name} library for D
 Group:          Development/Libraries
-License:        MIT
-URL:            https://github.com/vibe-d/vibe-core
-Source0:        https://github.com/vibe-d/vibe-core/archive/refs/tags/v%{lib_gitver}/vibe-core-%{lib_gitver}.tar.gz
+License:        BSD-2-Clause
+URL:            https://github.com/Inochi2D/%{lib_name}
+Source0:        https://github.com/Inochi2D/bcaa/archive/%{bcaa_commit}/bcaa-%{bcaa_short}.tar.gz
 
 BuildRequires:  setgittag
 BuildRequires:  git
 BuildRequires:  ldc
 BuildRequires:  dub
-BuildRequires:  zdub-eventcore-static
-BuildRequires:  zdub-stdx-allocator-static
 
 
 %description
@@ -40,8 +38,6 @@ Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
 
 Requires:       zdub-dub-settings-hack
-Requires:       zdub-eventcore-static
-Requires:       zdub-stdx-allocator-static
 
 
 %description devel
@@ -51,25 +47,22 @@ zdub-dub-settings-hack method.
 
 %prep
 %autosetup -n %{lib_name}-%{lib_gitver} -p1
-setgittag --rm -f -m v%{lib_gitver}
-
-mv LICENSE.txt LICENSE
+setgittag --rm -f v%{lib_gitver}
 
 
 %check
 dub build
-
 dub clean
 
 
 %install
-mkdir -p %{buildroot}%{_includedir}/zdub/%{lib_name}-%{lib_gitver}
-cp -r . %{buildroot}%{_includedir}/zdub/%{lib_name}-%{lib_gitver}/%{lib_name}
+mkdir -p %{buildroot}%{_includedir}/zdub/%{lib_name}/%{lib_gitver}
+cp -r . %{buildroot}%{_includedir}/zdub/%{lib_name}/%{lib_gitver}/%{lib_name}
 
 
 %files devel
 %license LICENSE
-%{_includedir}/zdub/%{lib_name}-%{lib_gitver}/%{lib_name}/
+%{_includedir}/zdub/%{lib_name}/%{lib_gitver}/%{lib_name}/
 
 
 %changelog

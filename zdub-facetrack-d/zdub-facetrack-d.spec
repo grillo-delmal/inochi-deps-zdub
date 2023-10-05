@@ -1,9 +1,9 @@
 %global debug_package %{nil}
 
-%define lib_name      taggedalgebraic
-%define lib_ver       0.11.22
-%define lib_gitver    0.11.22
-%define lib_semver    0.11.22
+%define lib_name      facetrack-d
+%define lib_ver       0.7.7+build.2.g135b304
+%define lib_gitver    0.7.7+build.2.g135b304
+%define lib_semver    0.7.7+build.2.g135b304
 %define lib_dist      0
 %define lib_commit    0000000
 %define lib_short     0000000
@@ -17,15 +17,17 @@ Version:        %{lib_ver}%{?lib_suffix:}
 Release:        %autorelease
 Summary:        %{lib_name} library for D
 Group:          Development/Libraries
-License:        MIT
-URL:            https://github.com/s-ludwig/taggedalgebraic
-Source0:        https://github.com/s-ludwig/taggedalgebraic/archive/refs/tags/v%{lib_gitver}/taggedalgebraic-%{lib_gitver}.tar.gz
-Source1:        LICENSE
+License:        BSD-2-Clause
+URL:            https://github.com/Inochi2D/%{lib_name}
+Source0:        https://github.com/Inochi2D/facetrack-d/archive/%{facetrack_d_commit}/facetrack-d-%{facetrack_d_short}.tar.gz
 
 BuildRequires:  setgittag
 BuildRequires:  git
 BuildRequires:  ldc
 BuildRequires:  dub
+BuildRequires:  zdub-fghj-static
+BuildRequires:  zdub-inmath-static
+BuildRequires:  zdub-vmc-d-static
 
 
 %description
@@ -39,6 +41,9 @@ Summary:        Support to use %{lib_name} for developing D applications
 Group:          Development/Libraries
 
 Requires:       zdub-dub-settings-hack
+Requires:       zdub-fghj-static
+Requires:       zdub-inmath-static
+Requires:       zdub-vmc-d-static
 
 
 %description devel
@@ -50,12 +55,9 @@ zdub-dub-settings-hack method.
 %autosetup -n %{lib_name}-%{lib_gitver} -p1
 setgittag --rm -f -m v%{lib_gitver}
 
-cp %{SOURCE1} .
-
 
 %check
 dub build
-
 dub clean
 
 
